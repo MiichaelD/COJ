@@ -46,13 +46,10 @@ int main()
     // To debug: cerr << "Debug messages..." << endl;
 
     int stars = 1;
-    int smallTriangleBase = (N-1) * 2 + 1;
-    int bigTriangleBase = 2 * smallTriangleBase + 1;
-    int startPos = smallTriangleBase + 1;
-    int accumBreadth = smallTriangleBase;
+    int accumBreadth = (N-1) * 2 + 1;
     
-    for (int times = 0 ; times < 2 ; ++times){
-        for (int line = 0 ; line < N; ++line){
+    for (int times = 0 ; times < 2 ; ++times, stars = 1){
+        for (int line = 0 ; line < N; ++line, stars +=2, --accumBreadth){
             for(int triangles = 0; triangles <= times ; ++triangles){
                 for (int i = 0 ; i < accumBreadth; ++i){// SPACE
                     cout << (times == 0 && line == 0 && i == 0 ? '.':' ');
@@ -62,17 +59,14 @@ int main()
                     cout << '*';
                 }
                 
-                if (times > 0 && triangles == 0){// SPACE - only if we are in the 2nd row and 1st triangle
+                if (times > 0 && triangles < 0){// SPACE - only if we are in the 2nd row and 1st triangle
                     for (int i = -1 ; i < accumBreadth; ++i){
                         cout << ' ';
                     }
                 }
             }
             cout << endl;
-            stars +=2;
-            --accumBreadth;
         }
-        stars = 1;
     }
     //
 }
