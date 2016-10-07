@@ -12,7 +12,7 @@
 
 using namespace std;
 
-const int MAX_LEN = 80;
+const int MAX_LEN = 81;
 const int MAX_SIZE = 255;
 
 
@@ -61,7 +61,8 @@ void urify(char *str){
 
 	size = i + (specials * 2);
 	str[size] = '\0';
-	for (--i, --size; specials && i < size && i >= 0; --i, --size){
+	for (--i, --size; specials; --i, --size){
+	// for (--i, --size; specials && i < size && i >= 0; --i, --size){
 		char c = str[i];
 		str[size] = getLastChar(c);
 		if (isSpecial(c)){
@@ -80,12 +81,13 @@ void print(const char *str){
 }
 
 int main(){
-	std::ios::sync_with_stdio(false); // http://en.cppreference.com/w/cpp/io/ios_base/sync_with_stdio
+	// http://en.cppreference.com/w/cpp/io/ios_base/sync_with_stdio
+	std::ios::sync_with_stdio(false);
 	cin.tie(NULL);
 
-	char str[MAX_SIZE] = {'\0'};
+	char str[MAX_SIZE];
 	while (true){
-		cin.getline(str,MAX_LEN);
+		cin.getline(str, MAX_LEN);
 		if (str[0] == '#') break;
 		urify(str);
 		print(str);
