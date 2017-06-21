@@ -11,6 +11,7 @@
 
 /**
   Link:           http://coj.uci.cu/24h/problem.xhtml?pid=1005
+  Solution:       http://www.geeksforgeeks.org/weighted-job-scheduling-log-n-time
 
   Description:    ABEAS Corp." is a very small company that owns a single
       airplane. The customers of ABEAS Corp are large airline companies which
@@ -137,35 +138,49 @@ public:
   }
 
   uint32_t solve() {
-    uint32_t maxPrice = 0;
-    sort(orders.begin(), orders.end(), ordersComparator);
-    for (int i = 0; i < orders.size(); ++i) {
-      vector<int> orderInds;
-      orderInds.push_back(i);
-      uint32_t price = orders[i].price;
-      int index = i;
-      while((index = findNextPossibleOrder(index)) >= 0) {
-        price += orders[index].price;
-        orderInds.push_back(index);
+    // Solutions vector.
+    vector<uint32_t> solution(orders.size());
+    solution[0] = orders[0].price;
+
+    for (int i = 1; i < orders.size(); ++i) {
+      solution[i] = orders[i].price;
+      int prevNonCollapsingIndex = findPrevPossibleOrderBiSec(i);
+      if (prevNonCollapsingIndex != -1) {
+        solution[i] += solution[prevNonCollapsingIndex];
       }
-      if (price > maxPrice) {
-        maxPrice = price;
-        // cout << "MaxPrixe: " << price << ". Orders completed:" << endl;
-        // printOrders(orderInds);
-      }
+      solution[i] = max(solution[i], solution[i-1]);
     }
-    return maxPrice;
+    return solution[orders.size()-1];
   }
 
-  int findNextPossibleOrder(int i) {
-    uint32_t endTime = orders[i].end;
-    for (++i; i < orders.size(); ++i) {
-      if (orders[i].start >= endTime) 
+  int findPrevPossibleOrder(int i) {
+    uint32_t startTime = orders[i].start;
+    for (--i; i >= 0; --i) {
+      if (orders[i].end <= startTime) 
         return i;
     }
     return -1;
   }
 
+  int findPrevPossibleOrderBiSec(int i) {
+    int lower = 0;
+    int upper = i;
+    while (lower <= upper) {
+      int mid = (lower + upper) / 2;
+      if (orders[mid].end <= orders[i].start) {
+        if (orders[mid + 1].end <= orders[i].start) {
+          lower = mid + 1;
+        } else {
+          return mid;
+        }
+      } else {
+        upper = mid - 1;
+      }
+
+
+    }
+    return -1;
+  }
 };
 
 int main(){
