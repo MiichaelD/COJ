@@ -19,7 +19,7 @@ import java.util.regex.*;
 public class Solution {
     
     static int[] missingNumbers(int[] arr, int[] brr) {
-        int maxRange = 100;
+        int maxRange = 101;
         int[] counter = new int[maxRange];
         int min = Integer.MAX_VALUE;
         for (int i = 0 ; i < arr.length; ++i) {
