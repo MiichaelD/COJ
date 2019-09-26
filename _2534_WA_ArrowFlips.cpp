@@ -12,6 +12,7 @@
 #include<iostream>
 #include <vector>
 #include <memory>
+#include <algorithm>
 
 using namespace std;
 
@@ -39,8 +40,8 @@ struct Segment {
   }
 };
 
-// Passing shared_ptr by reference is OK under controlled circumstances, ownership semantics are
-// lost though. More Info: https://stackoverflow.com/a/8385581
+// Passing shared_ptr by reference is OK under controlled circumstances, semantics are lost though.
+// https://stackoverflow.com/a/8385581
 bool sortSegmentsDesc(const shared_ptr<Segment> &s1, const shared_ptr<Segment> &s2) {
   return s1->getCount() > s2->getCount();
 }
