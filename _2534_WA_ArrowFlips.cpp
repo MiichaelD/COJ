@@ -12,7 +12,7 @@
 #include<iostream>
 #include <vector>
 #include <memory>
-#include <algorithm>
+#include <algorithm>  // std::sort
 
 using namespace std;
 
