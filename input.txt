@@ -1,10 +1,2 @@
-5
-Urahara Fong
-Sado Kotetsu
-Inoue Iba
-Kon Muguruma
-Shinje Iba
-3
-Sui Feng
-Isane Kotetsu
-Tetsuzaemon Iba
+ABDFTY
+CDFXYZ
