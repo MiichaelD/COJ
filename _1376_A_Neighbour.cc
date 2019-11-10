@@ -1,5 +1,5 @@
 /**
- *  Problem:    http://coj.uci.cu/24h/problem.xhtml?pid=1991
+ *  Problem:    http://coj.uci.cu/24h/problem.xhtml?pid=1376
  *  Programmer: Michael Duarte
  *  Date:       November 8th 2019
  * 
