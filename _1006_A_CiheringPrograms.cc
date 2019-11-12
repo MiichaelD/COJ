@@ -63,13 +63,12 @@ string reassamble(const string &input) {
   size_t len = input.length();
   if (len < 3)  return input;
   bool isOddLen = len % 2;
-  size_t firstHalf = (isOddLen ? ((len) / 2) : ((len-1) / 2));
-  size_t lastHalf = (len / 2) + (isOddLen ? 1 : 0);
+  size_t half = (len / 2) + (isOddLen ? 1 : 0);
   
   stringstream output;
-  output << reassamble(input.substr(1, firstHalf));
+  output << reassamble(input.substr(1, half - 1));
   output << (input.at(0));
-  output << reassamble(input.substr(lastHalf, len - lastHalf));
+  output << reassamble(input.substr(half, len - half));
   return output.str();
 }//
 
@@ -80,7 +79,7 @@ int main() {
   while (!cin.eof()) {
     getline(cin, input);
     input = decrypt(input);
-    cout << reassamble1(input) << endl;
+    cout << reassamble(input) << endl;
   }
   return EXIT_SUCCESS;
 }

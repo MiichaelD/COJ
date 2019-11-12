@@ -1,7 +1,7 @@
 import java.util.Scanner;
 class Main{
 	public static void  main(String args[]){
-		Scanner input=new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 		String subs,seq;
 		int i,j,subLen,seqLen;
 		while(input.hasNext()){
@@ -16,7 +16,8 @@ class Main{
 						break;
 				}
 			}
-			System.out.println((j==subLen)?"Yes":"No");
-		}		
+			System.out.println((j==subLen) ? "Yes" : "No");
+    }		
+    input.close();
 	}
 }
