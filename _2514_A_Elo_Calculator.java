@@ -6,15 +6,13 @@ import java.util.Scanner;
 class Main1 {
 	
 	public static void main(String[] args) {
-		
-		Scanner in = new Scanner(System.in);
-		String competition =in.next();
-		int players = in.nextInt();
-		double media = 0;
-		
 		String name;
 		int K;
 		double R, W, We, Ra;
+		Scanner in = new Scanner(System.in);
+		String competition = in.next();
+		int players = in.nextInt();
+		double media = 0;
 		
 		System.out.println("Tournament: "+competition+"\nNumber of players: "+players+"\nNew ratings:");
 		for(int i = 0; i < players ; i++){
@@ -28,7 +26,7 @@ class Main1 {
 			System.out.printf("%s %.0f\n", name, Ra);
 		}
 		System.out.printf("Media Elo: %.0f\n", media/players);
-		
+		in.close();
 	}
 }
 
