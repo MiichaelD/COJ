@@ -1,7 +1,7 @@
 /**
  *  Problem:    http://coj.uci.cu/24h/problem.xhtml?pid=1016
  *  Programmer: Michael Duarte
- *  Date:       November 12th 2019
+ *  Date:       November 13th 2019
  */
 
 #include <algorithm> // std::sort
